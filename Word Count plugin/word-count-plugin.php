@@ -11,8 +11,15 @@ Author URI: https://vahidsediqi.com
 class WordCountAndTimePlugin{
  function __construct(){
     add_action( 'admin_menu', array($this, 'adminPage'));
+    add_action('admin_init', array($this, 'settings'));
  }
 
+
+ function settings(){
+    //  1 arg is the name of the group that is belogs to
+
+    register_setting( 'wordcoundplugin', 'wcp_location', array('sanitize_callback' => 'sanitize_text_field' , 'default' => '0')); 
+ }
  function adminPage(){
         /*
     TIPS
